@@ -8,12 +8,11 @@ INSERT INTO clientes
   (nome, lealdade)
 VALUES
 	('Georgia', '0');
-
 -- 2)
 INSERT INTO pedidos 
 	(status, cliente_id)
 VALUES
-	('Recebido', '7');
+	('Recebido', '6');
 -- 3)
 INSERT INTO produtos_pedidos 
 	(pedido_id, produto_id)

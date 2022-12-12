@@ -1,18 +1,6 @@
 -- Aqui você deve colocar os códigos SQL referentes às
 -- Seleções de dados
 -- 1)
-SELECT 
- 	*
- FROM 
- 	pedidos;
- SELECT 
- 	*
- FROM 	
- 	produtos;
- SELECT 
- 	*
- FROM 	
- 	produtos_pedidos;
  SELECT
  	pedidos.id,
  	pedidos.status,
@@ -56,7 +44,7 @@ WHERE
 	prod.nome = 'Fritas';
 -- 4)
 SELECT 
-	sum(prod.preço) Total_do_pedido
+	round(sum(prod.preço)::NUMERIC ,2) Total_do_pedido
 FROM 
 	produtos_pedidos pp
 JOIN 

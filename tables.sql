@@ -18,12 +18,28 @@ CREATE TABLE IF NOT EXISTS endereços(
 	complemento VARCHAR(100),
 	cliente_id INTEGER UNIQUE NOT NULL
 );
+ALTER TABLE 
+	endereços
+ADD FOREIGN KEY
+	(cliente_id)
+REFERENCES	
+	clientes(id)
+ON DELETE CASCADE;
+
 -- Tabela pedidos
-CREATE TABLE IF NOT EXISTS pedido(
+CREATE TABLE IF NOT EXISTS pedidos(
 	id BIGSERIAL PRIMARY KEY,
 	status VARCHAR(50) NOT NULL,
 	cliente_id INTEGER NOT NULL
 );
+ALTER TABLE 
+	pedidos
+ADD FOREIGN KEY
+	(cliente_id)
+REFERENCES	
+	clientes(id)
+ON DELETE CASCADE;
+
 -- Tabela produtos
 CREATE TABLE IF NOT EXISTS produtos(
 	id BIGSERIAL PRIMARY KEY,
@@ -32,9 +48,25 @@ CREATE TABLE IF NOT EXISTS produtos(
 	preço FLOAT(8) NOT NULL,
 	pts_de_lealdade INTEGER NOT NULL
 );
+
 -- Tabela produtos_pedidos
 CREATE TABLE IF NOT EXISTS produtos_pedidos(
 	id BIGSERIAL PRIMARY KEY,
 	pedido_id INTEGER NOT NULL,
 	produto_id INTEGER NOT NULL
 );
+ALTER TABLE 
+	produtos_pedidos
+ADD FOREIGN KEY
+	(pedido_id)
+REFERENCES	
+	pedidos(id)
+ON DELETE CASCADE;
+
+ALTER TABLE 
+	produtos_pedidos
+ADD FOREIGN KEY
+	(produto_id)
+REFERENCES	
+	produtos(id)
+ON DELETE CASCADE;
